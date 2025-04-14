@@ -61,7 +61,6 @@
   </head>
   <body>
     <canvas id="backgroundCanvas"></canvas>
-
     <script>
       const canvas = document.getElementById("backgroundCanvas");
       const ctx = canvas.getContext("2d");
@@ -71,10 +70,10 @@
 
       // Dragon properties
       const dragon = {
-        x: canvas.width / 2,
-        y: canvas.height / 2,
-        size: 80,
-        speed: 6,
+        x: canvas.width / 1,
+        y: canvas.height / 1,
+        size: 30, // 🔽 Reduced from 50 or 40 to 25
+        speed: 4,
         angle: 0,
         wingAngle: 0,
         wingDirection: 1,
@@ -112,7 +111,20 @@
           this.speedY = Math.random() * 2 - 1;
           this.alpha = 1;
           this.decay = 0.02;
+          this.radius = Math.random() * 3 + 2;
           this.hue = hue; // For rainbow trail
+
+          // 🌈 Pick a random color for the bug
+          const colors = [
+            "#ff4d4d",
+            "#ffa94d",
+            "#ffff4d",
+            "#4dff88",
+            "#4dd2ff",
+            "#b84dff",
+            "#ff0000",
+          ];
+          this.color = colors[Math.floor(Math.random() * colors.length)];
         }
 
         update() {
@@ -564,6 +576,24 @@
           this.lastBuzzTime = 0;
         }
 
+        // Random color generator
+        getRandomColor() {
+          // Array of various colors
+          const colors = [
+            "#FF6347", // Tomato Red
+            "#FFD700", // Gold
+            "#ADFF2F", // Green Yellow
+            "#1E90FF", // Dodger Blue
+            "#8A2BE2", // Blue Violet
+            "#FF1493", // Deep Pink
+            "#00FA9A", // Medium Spring Green
+            "#DC143C", // Crimson
+            "#32CD32", // Lime Green
+            "#FF4500", // Orange Red
+          ];
+          // Return a random color from the array
+          return colors[Math.floor(Math.random() * colors.length)];
+        }
         update() {
           if (!this.exploded) {
             // Update position with boundary checking
@@ -663,7 +693,7 @@
             ctx.fill();
 
             // Draw bug head
-            ctx.fillStyle = `hsl(${this.color.match(/\d+/)[0]}, 80%, 40%)`;
+            ctx.fillStyle = this.color; // Set the bug's color
             ctx.beginPath();
             ctx.arc(this.size * 0.8, 0, this.size * 0.4, 0, Math.PI * 2);
             ctx.fill();
