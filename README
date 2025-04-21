@@ -1,9 +1,9 @@
-To do:
+To Do:
 
 1. Make it multiplayer
-2. When a player was hit on the body by it's opponents head (bugs or other players) the player explodes and otherwise.
-3. Limited dash.
-4. Skills (optional)
-5. Joy stick for mobile devices
-6. Scoring
-7. (Share your ideas)
+2. When a player is hit on the body by an opponent’s head (bug or another player), the player explodes — and vice versa
+3. Limit dash usage
+4. Add skills (optional)
+5. Add joystick support for mobile devices
+6. Implement simple scoring (kills and deaths)
+   (Feel free to share your ideas)
